@@ -2,7 +2,7 @@ class ExchangeRatesController < ApplicationController
 
   def index
       if ExchangeRate.take
-        redirect_to '/conversions'
+        redirect_to '/conversions/new'
       else
         response = HTTParty.get("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml")
         data = response.parsed_response
@@ -17,9 +17,8 @@ class ExchangeRatesController < ApplicationController
             record.save
           end
         end
-        redirect_to '/conversions'
+        redirect_to '/conversions/new'
       end
-      ExchangeRate.at
     end
 
 end

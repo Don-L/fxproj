@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :exchange_rates
   resources :conversions
 
-  get 'conversions/index'
+  get 'conversions/new'
 
   get ':controller/:action/:date/:base/:counter/:amount'
 
