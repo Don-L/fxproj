@@ -1,15 +1,9 @@
-<%= form_for :conversion do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+<%= form_tag("/conversions/show", method: "get") do %>
+  <%= label_tag(:base, "Base:") %>
+  <%= select_tag(:base, options_for_select(@currencies)) %>
+  <%= label_tag(:counter, "Counter:") %>
+  <%= select_tag(:counter, options_for_select(@currencies)) %>
+  <%= label_tag(:amount, "Amount:") %>
+  <%= number_field_tag(:amount, step: 0.01) %>
+  <%= submit_tag("Convert") %>
 <% end %>

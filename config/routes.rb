@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get 'conversions/new'
 
-  get ':controller/:action/:date/:base/:counter/:amount'
+  get 'conversions/show'
 
 end

@@ -26,4 +26,10 @@ class ExchangeRate < ApplicationRecord
     return rate2 / rate1
   end
 
+  def self.all_currencies #returns array of all currencies
+    bases = self.distinct.pluck(:base)
+    counters = self.distinct.pluck(:counter)
+    return bases.concat(counters).uniq.sort
+  end
+
 end

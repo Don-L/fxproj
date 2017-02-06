@@ -1,4 +1,17 @@
-<p>show form goes here</p>
+<%= form_for(@conversion, url: '/conversions/show', method: :get ) do |f| %>
+  <%= f.label :base, "Base:" %>
+  <%= f.select :base, options_for_select(@currencies, @base) %>
+  <%= f.label :counter, "Counter:" %>
+  <%= f.select :counter, options_for_select(@currencies, @counter) %>
+  <%= f.label :amount, "Amount:" %>
+  <%= f.number_field :amount, step: 0.01 %>
+  <%= f.submit("Convert") %>
+<% end %>
 
-<p><%=@converted_amount%></p>
-<p><%=@rate%></p>
+<%=puts 'heey' + params.to_s%>
+
+<p>Last base: <%=@base%></p>
+<p>Last counter: <%=@counter%></p>
+<p>Last amount: <%=@amount%></p>
+<p>Converted Amount: <%=@counter + ' ' + @converted_amount%></p>
+<p>Rate: <%=@rate%></p>

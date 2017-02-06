@@ -25,4 +25,10 @@ class ExchangeRateTest < ActiveSupport::TestCase
     assert_equal(0.25, rate)
   end
 
+  test "all_currencies returns sorted array of all currencies" do
+    arr = ExchangeRate.all_currencies
+    assert_equal(3, arr.length)
+    assert_equal('ZAR', arr[2])
+  end
+
 end
