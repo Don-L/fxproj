@@ -1,8 +1,5 @@
 class ConversionsController < ApplicationController
 
-  def index
-  end
-
   def new
     @currencies = ExchangeRate.all_currencies
     @start_date = ExchangeRate.start_date
