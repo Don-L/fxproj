@@ -31,4 +31,9 @@ class ExchangeRateTest < ActiveSupport::TestCase
     assert_equal('ZAR', arr[2])
   end
 
+  test "given an invalid date in the form of a string YYYY-MM-DD, can return an alternative valid date string" do
+    date_string = ExchangeRate.find_valid_date('2016-11-31')
+    assert_equal(Date.parse('2016-11-30'), date_string)
+  end
+
 end

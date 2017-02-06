@@ -1,4 +1,11 @@
-<%= form_for(@conversion, url: '/conversions/show', method: :get ) do |f| %>
+<%= form_for(@conversion, url: '/conversions/show', method: :post ) do |f| %>
+  <%= f.label :date, "Select date*: " %>
+  <%= f.select :year, options_for_select(@years, @year) %>
+  <%= f.select :month, options_for_select(@months, @month) %>
+  <%= f.select :day, options_for_select(@days, @day) %>
+
+  <%= f.hidden_field :date, :value=>:year %>
+
   <%= f.label :base, "Base:" %>
   <%= f.select :base, options_for_select(@currencies, @base) %>
   <%= f.label :counter, "Counter:" %>
@@ -8,10 +15,11 @@
   <%= f.submit("Convert") %>
 <% end %>
 
-<%=puts 'heey' + params.to_s%>
-
 <p>Last base: <%=@base%></p>
 <p>Last counter: <%=@counter%></p>
 <p>Last amount: <%=@amount%></p>
+<p>Last date: <%=@date%></p>
 <p>Converted Amount: <%=@counter + ' ' + @converted_amount%></p>
 <p>Rate: <%=@rate%></p>
+
+<p>*Earliest date for which records are available is <%=@start_date%></p>

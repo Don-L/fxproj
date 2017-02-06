@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get 'conversions/new'
 
-  get 'conversions/show'
+  post 'conversions/show'
 
 end
