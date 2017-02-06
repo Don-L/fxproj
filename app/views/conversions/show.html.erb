@@ -1,25 +1,37 @@
-<%= form_for(@conversion, url: '/conversions/show', method: :post ) do |f| %>
-  <%= f.label :date, "Select date*: " %>
+<div class='app'>
+  <div class='title'>
+    <h3>FX4U</h3>
+  </div>
+<div class='fxform'>
+  <%= form_for(@conversion, url: '/conversions/show', method: :post ) do |f| %>
+  <div class='dateselectsec'>
+  <%= f.label :date, "DATE* " %>
+  <div class='dateselects'>
   <%= f.select :year, options_for_select(@years, @year) %>
   <%= f.select :month, options_for_select(@months, @month) %>
   <%= f.select :day, options_for_select(@days, @day) %>
-
-  <%= f.hidden_field :date, :value=>:year %>
-
-  <%= f.label :base, "Base:" %>
-  <%= f.select :base, options_for_select(@currencies, @base) %>
-  <%= f.label :counter, "Counter:" %>
-  <%= f.select :counter, options_for_select(@currencies, @counter) %>
-  <%= f.label :amount, "Amount:" %>
+  </div>
+  </div>
+  <div class='amountfield'>
+  <%= f.label :amount, "AMOUNT" %>
   <%= f.number_field :amount, step: 0.01 %>
-  <%= f.submit("Convert") %>
+  </div>
+  <div class='currencyselect'>
+  <%= f.label :base, "FROM" %>
+  <%= f.select :base, options_for_select(@currencies, @base) %>
+  <%= f.label :counter, "TO" %>
+  <%= f.select :counter, options_for_select(@currencies, @counter) %>
+  </div>
+  <div class='convert'>
+  <%= f.submit("CONVERT") %>
+  </div>
 <% end %>
-
-<p>Last base: <%=@base%></p>
-<p>Last counter: <%=@counter%></p>
-<p>Last amount: <%=@amount%></p>
-<p>Last date: <%=@date%></p>
-<p>Converted Amount: <%=@counter + ' ' + @converted_amount%></p>
-<p>Rate: <%=@rate%></p>
-
-<p>*Earliest date for which records are available is <%=@start_date%>. If an invalid date, or the date of a non-working day is selected, the exchange rate from the nearest working day will be used.</p>
+</div>
+<div class='result'>
+<p class='amt'><%=@counter + ' ' + @converted_amount%></p>
+<p class='rate'>Rate: <%=@rate%>, as of <%=@date%></p>
+</div>
+<div class='smalltype'>
+<p>*The earliest date for which records are available is <%=@start_date%>. If the date of a non-working day is selected, the exchange rate from the next working day will be used.</p>
+</div>
+</div>

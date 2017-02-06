@@ -13,3 +13,123 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #4a525a;
+}
+
+div.app {
+  background-color: #EEE;
+  color: #4a525a;
+  font-family: "proxima-nova", Helvetica neue, Helvetica, arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 auto;
+  padding: 0;
+  text-shadow: 0 1px 0 #fff;
+  width: 98%;
+  border-radius: 15px;
+}
+
+div.title {
+  padding-top: 5px;
+}
+
+div.title h3 {
+ font-size: 44px;
+ text-align: center;
+}
+
+div.fxform {
+}
+
+div.dateselectsec {
+  width: 60%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+div.dateselectsec label {
+  display: inline-block;
+  width: 23%;
+  float: left;
+  padding-top: 5px;
+}
+
+ select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 23%;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 5px;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+}
+
+div.amountfield {
+ width: 60%;
+ margin: 0 auto;
+ text-align: center;
+ margin-bottom: 40px;
+}
+
+div.amountfield label {
+}
+
+input {
+  font-size: 16px;
+  line-height: 30px;
+  width: 20%;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.currencyselect {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+div.currencyselect label {
+  width: 23%;
+  display: inline-block;
+  text-align: center;
+}
+
+div.convert {
+  width: 60%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+div.result {
+ background-color: #272b2f;
+ color: #b5ada5;
+ width: 60%;
+ margin: 0 auto;
+ height: 100px;
+ text-align: center;
+ border-radius: 15px;
+}
+
+p.amt {
+  font-size: 48px;
+  line-height: 56px;
+  margin-bottom: 0;
+  text-shadow: none;
+}
+
+p.rate {
+  text-shadow: none;
+}
+
+div.smalltype {
+  width: 60%;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 18px;
+  padding-bottom: 5px;
+}

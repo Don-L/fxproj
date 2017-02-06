@@ -1,15 +1,35 @@
+<div class='app'>
+  <div class='title'>
+    <h3>FX4U</h3>
+  </div>
+<div class='fxform'>
 <%= form_tag("/conversions/show", method: "post") do %>
-  <%= label_tag(:date, "Select date*: ") %>
+  <div class='dateselectsec'>
+  <%= label_tag(:date, "DATE* ") %>
+  <div class='dateselects'>
   <%= select_tag(:year, options_for_select(@years, @year)) %>
   <%= select_tag(:month, options_for_select(@months, @month)) %>
   <%= select_tag(:day, options_for_select(@days, @day)) %>
-  <%= label_tag(:base, "Base:") %>
-  <%= select_tag(:base, options_for_select(@currencies)) %>
-  <%= label_tag(:counter, "Counter:") %>
-  <%= select_tag(:counter, options_for_select(@currencies)) %>
-  <%= label_tag(:amount, "Amount:") %>
+  </div>
+  </div>
+  <div class='amountfield'>
+  <%= label_tag(:amount, "AMOUNT") %>
   <%= number_field_tag(:amount, step: 0.01) %>
-  <%= submit_tag("Convert") %>
+  </div>
+  <div class='currencyselect'>
+  <%= label_tag(:base, "FROM") %>
+  <%= select_tag(:base, options_for_select(@currencies)) %>
+  <%= label_tag(:counter, "TO") %>
+  <%= select_tag(:counter, options_for_select(@currencies)) %>
+  </div>
+  <div class='convert'>
+  <%= submit_tag("CONVERT") %>
+  </div>
 <% end %>
-
-<p>*Earliest date for which records are available is <%=@start_date%>. If an invalid date, or the date of a non-working day is selected, the exchange rate from the nearest working day will be used.</p>
+</div>
+<div class='result'>
+</div>
+<div class='smalltype'>
+<p>*The earliest date for which records are available is <%=@start_date%>. If the date of a non-working day is selected, the exchange rate from the next working day will be used.</p>
+</div>
+</div>
