@@ -10,10 +10,10 @@ class ConversionsController < ApplicationController
     @start_month = ExchangeRate.lower_date_bound('month')
     @start_year = ExchangeRate.lower_date_bound('year')
     @years = ExchangeRate.all_years
-    @months = ExchangeRate.all_months_names
+    @months = Conversion.get_months_for_select
     @days = (1..31).to_a
     @year = Date.today.year
-    @month = Date.today.strftime('%B')
+    @month = Date.today.month
     @day = Date.today.day
   end
 
@@ -22,16 +22,17 @@ class ConversionsController < ApplicationController
       redirect_to '/conversions/new'
     else
       if params[:conversion] #post from conversions/show
-        @date = Date.parse(params[:conversion][:year] + '-' + params[:conversion][:month] + '-' + params[:conversion][:day])
+        date_string = params[:conversion][:year] + '-' + params[:conversion][:month] + '-' + params[:conversion][:day]
         @base = params[:conversion][:base]
         @counter = params[:conversion][:counter]
         @amount = params[:conversion][:amount]
       else #post from conversions/new
-        @date = Date.parse(params[:year] + '-' + params[:month] + '-' + params[:day])
+        date_string = params[:year] + '-' + params[:month] + '-' + params[:day]
         @base = params[:base]
         @counter = params[:counter]
         @amount = params[:amount]
       end
+      @date = ExchangeRate.select_date_from_records(date_string)
       @conversion = Conversion.new(date: @date, base: @base, counter: @counter, amount: @amount)
       @converted_amount = sprintf('%.2f', @conversion.converted_amount)
       @rate = sprintf('%.4f', @conversion.rate)
@@ -41,10 +42,10 @@ class ConversionsController < ApplicationController
       @start_month = ExchangeRate.lower_date_bound('month')
       @start_year = ExchangeRate.lower_date_bound('year')
       @years = ExchangeRate.all_years
-      @months = ExchangeRate.all_months_names
+      @months = Conversion.get_months_for_select
       @days = (1..31).to_a
       @day = @conversion.day
-      @month = @conversion.date.strftime("%B")
+      @month = @conversion.date.month
       @year = @conversion.year
     end
   end

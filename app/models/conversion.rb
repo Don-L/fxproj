@@ -28,5 +28,17 @@ class Conversion
     @rate = ExchangeRate.at(@date, @base, @counter)
   end
 
+  def self.get_months_for_select
+    month_names = ExchangeRate.all_months_names
+    month_numbers = ExchangeRate.all_months
+    i = 0
+    arr = []
+    while i < month_names.length
+      arr = arr.push([month_names[i], month_numbers[i]])
+      i += 1
+    end
+    return arr
+  end
+
 
 end

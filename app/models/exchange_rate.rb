@@ -34,6 +34,7 @@ class ExchangeRate < ApplicationRecord
 
   def self.all_dates
     return self.pluck(:date).uniq.sort
+    return self.pluck(:date).uniq.sort
   end
 
   def self.all_years
@@ -53,7 +54,7 @@ class ExchangeRate < ApplicationRecord
   end
 
   def self.start_date
-    return self.all_dates[0]
+    return self.all_dates.first
   end
 
   def self.end_date
@@ -86,6 +87,7 @@ class ExchangeRate < ApplicationRecord
 
   def self.select_date_from_records(date_string)
     arr = date_string.split('-')
+    puts 'AAARRRRR ' + arr.to_s
     arr = arr.map{|item| item.to_i}
     if Date.valid_date?(arr[0], arr[1], arr[2]) == false
       date = self.find_valid_date(date_string)
@@ -103,7 +105,7 @@ class ExchangeRate < ApplicationRecord
       while all_dates.include?(date) == false
         date = date.next_day(1)
       end
-    end  
+    end
     return date
   end
 
